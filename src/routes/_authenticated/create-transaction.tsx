@@ -90,7 +90,7 @@ function CreateTransactionComponent() {
     defaultValues: {
       date: getCurrentDate(),
       title: '',
-      amount: 1,
+      amount: '1',
       type: 'expense' as 'expense' | 'earning',
       categories: [] as Category[],
     },
@@ -215,7 +215,7 @@ function CreateTransactionComponent() {
                 onChange: ({ value }) =>
                   !value
                     ? 'A value is required'
-                    : value <= 0
+                    : Number(value) <= 0
                       ? 'Must be greater than 0'
                       : undefined,
               }}
@@ -228,7 +228,7 @@ function CreateTransactionComponent() {
                       name={field.name}
                       value={field.state.value}
                       onBlur={field.handleBlur}
-                      onChange={(e) => field.handleChange(+e.target.value)}
+                      onChange={(e) => field.handleChange(e.target.value)}
                       placeholder="The amount for your transaction..."
                     />
                   </label>
