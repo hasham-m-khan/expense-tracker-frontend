@@ -34,7 +34,7 @@ function Dashboard() {
   return (
     <div className="flex justify-center gap-x-2">
       <div className="flex flex-col gap-y-2">
-        <div className="card card-xl card-border border-base-300 bg-base-100 w-[350px] mx-auto">
+        <div className="card card-xl card-border border-base-300 bg-base-100 w-87.5 mx-auto">
           <div className="card-body">
             <div className="card-title text-3xl font-bold">Total Spent</div>
             <div className="text-md text-gray-400">
@@ -48,7 +48,7 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="card card-xl card-border border-base-300 bg-base-100 w-[350px] mx-auto">
+        <div className="card card-xl card-border border-base-300 bg-base-100 w-87.5 mx-auto">
           <div className="card-body">
             <div className="card-title text-3xl font-bold">Total Earnings</div>
             <div className="text-md text-gray-400">
@@ -63,7 +63,7 @@ function Dashboard() {
         </div>
       </div>
 
-      <div className="card card-xl card-border border-base-300 bg-base-100 w-[350px]">
+      <div className="card card-xl card-border border-base-300 bg-base-100 w-87.5">
         <div className="card-body">
           <div className="card-title text-4xl font-bold">Total Savings</div>
           <div className="text-md text-gray-400">
