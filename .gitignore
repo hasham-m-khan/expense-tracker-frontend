@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+#FUSE temporary filess
+.fuse_hidden*
