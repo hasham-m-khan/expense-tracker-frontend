@@ -2,10 +2,11 @@ import { useState, useEffect } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { useForm } from '@tanstack/react-form';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { PlusIcon, XIcon } from '@phosphor-icons/react';
-import { api } from '@lib/api';
 import { useToastContext } from '@/contexts/ToastContext/UseToastContext';
+import { IoClose } from "react-icons/io5";
+import { FaPlus } from "react-icons/fa6";
 import MultiSelectCombobox from '@/components/ComboBox';
+import { api } from '@lib/api';
 
 export const Route = createFileRoute("/_authenticated/create-transaction")({
   component: CreateTransactionComponent,
@@ -330,7 +331,7 @@ function CreateTransactionComponent() {
                 type="submit"
                 className="btn btn-sm btn-primary"
               >
-                Add <PlusIcon size={10} />
+                Add <FaPlus size={10} />
               </button>
             </div>
           </form>
@@ -346,7 +347,7 @@ function CreateTransactionComponent() {
                     onClick={() => removeUpdatedCategory(uc)}
                   >
                     <span>{uc.name}</span>
-                    <span><XIcon size={12} className="text-neutral-ccontent" /></span>
+                    <span><IoClose size={12} className="text-neutral-ccontent" /></span>
                   </div>
                 ))}
               </div>
