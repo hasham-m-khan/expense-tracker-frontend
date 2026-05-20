@@ -1,6 +1,7 @@
 import { Combobox, ComboboxInput, ComboboxOption, ComboboxOptions } from '@headlessui/react'
 import { useState } from 'react'
-import { XIcon, CheckIcon } from '@phosphor-icons/react'
+import { IoClose } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa6";
 
 // --- Types ---------------------------------------------------------
 interface Item {
@@ -59,7 +60,7 @@ export default function MultiSelectCombobox(props: Props) {
             {filteredItems.map((item) => (
               <ComboboxOption key={item.id} value={item} className="list-row rounded-none data-focus:bg-primary items-center capitalize">
                 {selectedItems.includes(item) && 
-                  <span><CheckIcon size={12} /></span>
+                  <span><FaCheck size={12} /></span>
                 }
                 {item.name}
               </ComboboxOption>
@@ -78,7 +79,7 @@ export default function MultiSelectCombobox(props: Props) {
                 className="badge badge-soft badge-sm badge-success shadow-sm"
               >
                 {item.name}
-                <span><XIcon size={12}/></span>
+                <span><IoClose size={12}/></span>
               </span>
             ))}
           </div>
