@@ -338,7 +338,7 @@ function CreateTransactionComponent() {
 
           <div className="card mt-4">
             <h3 className="card-title">Available Categories</h3>
-            <div className="card-body border border-base-300 rounded rounded-2xl">
+            <div className="card-body border border-base-300 rounded-2xl">
               <div className="badge-container flex flex-wrap gap-2" >
                 {updatedCategories.map((uc) => (
                   <div
