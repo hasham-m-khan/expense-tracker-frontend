@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { useQuery, useQueryClient, useMutation } from '@tanstack/react-query';
-import { XIcon } from '@phosphor-icons/react';
+import { IoClose } from "react-icons/io5";
 
 import { api } from '@/lib/api';
 import { useToastContext } from '@/contexts/ToastContext/UseToastContext';
@@ -120,7 +120,7 @@ function TransactionsComponent() {
                       disabled={deleteMutation.isPending}
                       onClick={() => deleteMutation.mutate(transaction.id)}
                     >
-                      <XIcon size={16} />
+                      <IoClose size={16} />
                     </button>
                   </div>
                 </td>
