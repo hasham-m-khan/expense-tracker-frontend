@@ -1,19 +1,28 @@
-import { Link } from '@tanstack/react-router';
-import { useQuery } from '@tanstack/react-query';
+import { Link, useNavigate, } from '@tanstack/react-router';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useThemeContext } from '@/contexts/ThemeContext/UseThemeContext';
 import { PiMoonFill } from "react-icons/pi";
 import { PiSunDimFill } from "react-icons/pi";
 
 import { userQueryOptions } from '@/lib/auth';
+import { api } from '@/lib/api';
+
 
 export default function NavBar() {
   const { data: user } = useQuery(userQueryOptions);
+  const queryClient = useQueryClient();
+  const navigate = useNavigate();
   const { themeType, setTheme } = useThemeContext();
 
   const toggleTheme = () => {
     setTheme(themeType === 'light' ? 'dark' : 'light');
   };
 
+  const handleSignout = async () => {
+    await api.v1.auth.logout.$post({});
+    queryClient.setQueryData(["user"], null);
+    navigate({ to: "/" });
+  }
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="flex-1">
@@ -21,7 +30,7 @@ export default function NavBar() {
       </div>
 
       <div className="flex-none">
-                <label className="btn btn-sm btn-ghost btn-circle swap swap-rotate">
+        <label className="btn btn-sm btn-ghost btn-circle swap swap-rotate">
           <input
             type="checkbox"
             checked={themeType === 'dark'}
@@ -50,13 +59,35 @@ export default function NavBar() {
         </ul>
         {
           user ? (
-            <span>asdef</span>
+            <>
+              <button
+                className="btn"
+                popoverTarget="logout-dropdown"
+                style={{ anchorName: "--anchor-1" }}
+              >{user.firstName}</button>
+
+              <ul
+                className="dropdown menu w-52 bg-base-100 rounded-box shadow-sm mt-2 border border-neutral/20"
+                popover="auto"
+                id="logout-dropdown"
+                style={{ positionAnchor: "--anchor-1" }}
+              >
+                <li>
+                  <button
+                    onClick={handleSignout}
+                    className="btn btn-error"
+                  >
+                    Sign out
+                  </button>
+                </li>
+              </ul>
+            </>
           ) : (
-            <button className="btn btn-sm rounded-full btn-primary mr-2">Sign in</button>
+            <a href="/signin"
+              className="btn btn-sm rounded-full btn-primary mr-2"
+            >Sign in</a>
           )
-
         }
-
       </div>
     </div>
   )
