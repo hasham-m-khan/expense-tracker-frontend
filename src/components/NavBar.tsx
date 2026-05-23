@@ -60,27 +60,32 @@ export default function NavBar() {
         {
           user ? (
             <>
-              <button
-                className="btn"
+              <button className="avatar mr-4"
                 popoverTarget="logout-dropdown"
                 style={{ anchorName: "--anchor-1" }}
-              >{user.firstName}</button>
+              >
+                <div className="ring-primary ring-offset-1 ring-3 ring-offset-base-100  w-8 rounded-full">
+                  <img src={ user.avatarUrl! } />
+                </div>
+              </button>
 
-              <ul
-                className="dropdown menu w-52 bg-base-100 rounded-box shadow-sm mt-2 border border-neutral/20"
+              <div className="dropdown menu w-52 bg-base-100 rounded-box shadow-sm mt-4 mr-4 border border-neutral/20"
                 popover="auto"
                 id="logout-dropdown"
                 style={{ positionAnchor: "--anchor-1" }}
               >
-                <li>
-                  <button
-                    onClick={handleSignout}
-                    className="btn btn-error"
-                  >
-                    Sign out
-                  </button>
-                </li>
-              </ul>
+                <h2 className="text-md pt-1">Welcome { user.firstName }</h2>
+                <ul className="mt-3">
+                  <li>
+                    <button
+                      onClick={handleSignout}
+                      className="btn btn-error"
+                    >
+                      Sign out
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </>
           ) : (
             <a href="/signin"
