@@ -43,7 +43,7 @@ export default function NavBar() {
           {/* Moon icon (shows when unchecked/light theme is active) */}
           <PiMoonFill size={16} className="swap-off text-slate-500" />
         </label>
-        <ul className="menu menu-horizontal px-1">
+        <ul className="menu menu-horizontal px-1 mr-2">
           <li>
             <Link to='/'>Home</Link>
           </li>
